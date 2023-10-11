@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\services",
+    "\\src\\app\\services\\common",
+    "\\src\\app\\services\\common\\models",
+    "\\src\\app\\ui\\components",
+    "\\src\\app\\ui\\components\\login",
+    "\\src\\app\\ui\\components\\register"
+  ],
+  "SelectedNode": "\\src\\app\\services\\common\\http-error-handler-interceptor.service.ts",
+  "PreviewInSolutionExplorer": false
+}

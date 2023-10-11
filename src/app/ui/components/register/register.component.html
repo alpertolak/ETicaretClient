@@ -1,0 +1,66 @@
+<div class="row" style="margin-top:40px">
+  <div class="col-md-4"></div>
+  <div class="col-md-4" style="background-color: navajowhite; padding:20px; border-radius:10px">
+
+    <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)">
+      <div class="mb-3">
+        <label for="nameSurname" class="form-label">Ad Soyad<sup style="color:red">*</sup></label>
+        <input type="text" formControlName="nameSurname" class="form-control" id="nameSurname"
+               [ngClass]="{'is-invalid':submitted && component.nameSurname.errors}"> <!--nameSurname bölümünde hata kontrolü-->
+        <!-- hata mesalarını tanımladımız alan başlangıcı-->
+        <small class="form-text invalid-feedback" *ngIf="submitted && component.nameSurname.errors?.required">Ad Soyad Alanı Boş Geçilemez.</small>
+
+        <small class="form-text invalid-feedback" *ngIf="submitted && (component.nameSurname.errors?.maxlength || component.nameSurname.errors?.minlength)">Ad Soyad Alanı 3-50 karakter arasında olmalıdır.</small>
+        <!--hata mesajları son-->
+      </div>
+
+      <div class="mb-3">
+        <label for="username" class="form-label">Kullanıcı Adı<sup style="color:red">*</sup></label>
+        <input type="text" formControlName="username" class="form-control" id="username"
+               [ngClass]="{'is-invalid':submitted && component.username.errors}">
+
+        <!-- hata mesalarını tanımladımız alan başlangıcı-->
+        <small class="form-text invalid-feedback" *ngIf="submitted && component.username.errors?.required">Kulanıcı Adı Alanı Boş Geçilemez.</small>
+
+        <small class="form-text invalid-feedback" *ngIf="submitted && (component.username.errors?.maxlength || component.username.errors?.minlength)">Kullanıcı Adı Alanı 3-50 karakter arasında olmalıdır.</small>
+        <!--hata mesajları son-->
+      </div>
+  
+      <div class="mb-3">
+        <label for="email" class="form-label">E-Mail<sup style="color:red">*</sup></label>
+        <input type="email" formControlName="email" class="form-control" id="email"
+               [ngClass]="{'is-invalid':submitted && component.email.errors}">
+
+        <!-- hata mesalarını tanımladımız alan başlangıcı-->
+        <small class="form-text invalid-feedback" *ngIf="submitted && component.email.errors?.required">Email Alanı Boş Geçilemez.</small>
+        <small class="form-text invalid-feedback" *ngIf="submitted && component.email.errors?.email">Geçersiz Email</small>
+        <!--hata mesajları son-->
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Şifre<sup style="color:red">*</sup></label>
+        <input type="password" formControlName="password" class="form-control" id="password"
+               [ngClass]="{'is-invalid':submitted && component.password.errors}">
+
+        <!-- hata mesalarını tanımladımız alan başlangıcı-->
+        <small class="form-text invalid-feedback" *ngIf="submitted && component.password.errors?.required">Sifre Alanı Boş Geçilemez.</small>
+        <!--hata mesajları son-->
+      </div>
+
+      <div class="mb-3">
+        <label for="passwordConfirm" class="form-label">Şifre Tekrar<sup style="color:red">*</sup></label>
+        <input type="password" formControlName="passwordConfirm" class="form-control" id="passwordConfirm"
+               [ngClass]="{'is-invalid':submitted && component.passwordConfirm.errors}">
+
+        <!-- hata mesalarını tanımladımız alan başlangıcı-->
+        <small class="form-text invalid-feedback" *ngIf="submitted && component.passwordConfirm.errors?.required">Sifre Tekrarı Alanı Boş Geçilemez.</small>
+        <small class="form-text" style="color:crimson" *ngIf="submitted && frm.hasError('notSame')">Girilen Şifre Aynı Değildir.</small>
+        <!--hata mesajları son-->
+
+      </div>
+
+      <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+    </form>
+  </div>
+  <div class="col-md-4"></div>
+</div>

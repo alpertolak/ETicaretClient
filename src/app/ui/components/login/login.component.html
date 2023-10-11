@@ -1,0 +1,30 @@
+<div class="row" style="margin-top:40px">
+  <div class="col-md-4"></div>
+  <div class="col-md-4" style="background-color: navajowhite; padding:20px; border-radius:10px">
+
+    <div class="mb-3">
+      <label for="username" class="form-label">Kullanıcı Adı veya Mail Adresi<sup style="color:red">*</sup></label>
+      <input #txtUsernameOrEmail type="text" class="form-control" id="username">
+
+      <!-- hata mesalarını tanımladımız alan başlangıcı-->
+      <small class="form-text invalid-feedback">Kulanıcı Adı Alanı Boş Geçilemez.</small>
+
+      <!--hata mesajları son-->
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Şifre<sup style="color:red">*</sup></label>
+      <input #txtPassword type="password" class="form-control" id="password">
+
+      <!-- hata mesalarını tanımladımız alan başlangıcı-->
+      <small class="form-text invalid-feedback">Sifre Alanı Boş Geçilemez.</small>
+      <!--hata mesajları son-->
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="login(txtUsernameOrEmail.value,txtPassword.value)">Giriş Yap</button>
+
+    <asl-google-signin-button type='icon' size='medium' style="float:right"></asl-google-signin-button>
+
+  </div>
+  <div class="col-md-4"></div>
+</div>
