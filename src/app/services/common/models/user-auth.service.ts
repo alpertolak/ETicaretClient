@@ -23,6 +23,7 @@ export class UserAuthService {
     if (tokenResponse) {
 
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      localStorage.setItem("RefreshToken", tokenResponse.token.);
 
       this.toastService.messeage("Kullanıcı Girişi Başarıyla Sağlanmıştır", "Giriş Başarılı", {
         messageType: ToastrMesseageType.Success,
