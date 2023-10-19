@@ -27,7 +27,7 @@ export class HttpClientService {
   }
 
   Post<T>(requestParameter: Partial<RequestParameters>, body: Partial<T>): Observable<T> {
-
+    
     let url: string = ""
 
     if (requestParameter.fullEndPoint)

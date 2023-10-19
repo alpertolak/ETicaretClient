@@ -1,6 +1,6 @@
 import { SocialUser } from '@abacritt/angularx-social-login';
 import { Injectable } from '@angular/core';
-import { firstValueFrom, Observable } from 'rxjs';
+import { firstValueFrom, observable, Observable } from 'rxjs';
 import { TokenResponse } from '../../../contracts/token/token_response';
 import { CustomToastrService, ToastrMesseageType, ToastrPositon } from '../../ui/custom-toastr.service';
 import { HttpClientService } from '../http-client.service';
@@ -23,7 +23,7 @@ export class UserAuthService {
     if (tokenResponse) {
 
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
-      localStorage.setItem("RefreshToken", tokenResponse.token.);
+      localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
 
       this.toastService.messeage("Kullanıcı Girişi Başarıyla Sağlanmıştır", "Giriş Başarılı", {
         messageType: ToastrMesseageType.Success,
@@ -45,6 +45,7 @@ export class UserAuthService {
 
     if (tokenResponse) {
       localStorage.setItem("accessToken", tokenResponse.token.accessToken);
+      localStorage.setItem("refreshToken", tokenResponse.token.refreshToken);
 
       this.toastService.messeage("Google girişi başarıyla sağlanmıştır.", "Giriş Başarılı", {
         messageType: ToastrMesseageType.Success,
@@ -53,5 +54,23 @@ export class UserAuthService {
     }
 
     callbackFucntion();
+  }
+
+
+  async refreshTokenLogin(refreshToken: string, callBackFunction?: () => void) {
+    
+    const observable: Observable<any | TokenResponse> = this.httpClientService.Post({
+      action:"refreshtokenlogin",
+      controller: "auth",
+
+    }, { RefreshToken: refreshToken })
+
+    const tokenResponse: TokenResponse = await firstValueFrom(observable) as TokenResponse
+
+    if (tokenResponse) {
+      localStorage.setItem("accessToken", tokenResponse.token.accessToken)
+      localStorage.setItem("refreshToken", tokenResponse.token.refreshToken)
+    }
+    callBackFunction()
   }
 }
